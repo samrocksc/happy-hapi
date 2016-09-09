@@ -11,6 +11,7 @@ const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
   port: 3000,
+  cors: true,
 });
 
 server.route(routes);

@@ -1,6 +1,6 @@
 {
   "name": "happy-hapi",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A nice skeleton for using Hapi for just about any project.",
   "main": "server.js",
   "dependencies": {
