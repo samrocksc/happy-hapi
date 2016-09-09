@@ -1,0 +1,31 @@
+{
+  "name": "happy-hapi",
+  "version": "1.0.0",
+  "description": "A nice skeleton for using Hapi for just about any project.",
+  "main": "server.js",
+  "dependencies": {
+    "babel-eslint": "^6.1.2",
+    "blipp": "^2.3.0",
+    "eslint": "^3.4.0",
+    "hapi": "^15.0.3",
+    "hapi-swagger": "^7.2.0",
+    "inert": "^4.0.2",
+    "joi": "^9.0.4",
+    "nodemon": "^1.10.2",
+    "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^11.0.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js",
+    "server": "nodemon server.js"
+  },
+  "author": "Sam C.",
+  "license": "MIT"
+}

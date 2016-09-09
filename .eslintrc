@@ -1,0 +1,15 @@
+{
+  // enable airbnb eslint from https://www.npmjs.com/package/eslint-config-airbnb
+  "extends": "airbnb",
+    // Enable ES6 support. If you want to use custom Babel
+    // features, you will need to enable a custom parser
+    // as described in a section below.
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      prefer-template: "off"
+    }
+}
