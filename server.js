@@ -5,20 +5,22 @@ const HapiSwagger = require('hapi-swagger');
 const Pack = require('./package');
 const Blipp = require('blipp');
 const routes = require('./server/routes');
+const addCorsHeaders = require('hapi-cors-headers');
 
 const server = new Hapi.Server();
 
 server.connection({
   host: 'localhost',
   port: 3000,
-  cors: true,
 });
+
+server.ext('onPreResponse', addCorsHeaders);
 
 server.route(routes);
 
 const options = {
   info: {
-    title: 'Test API Documentation',
+    title: 'Happy Hapi Examples',
     version: Pack.version,
   },
 };

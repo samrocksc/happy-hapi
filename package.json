@@ -8,6 +8,7 @@
     "blipp": "^2.3.0",
     "eslint": "^3.4.0",
     "hapi": "^15.0.3",
+    "hapi-cors-headers": "^1.0.0",
     "hapi-swagger": "^7.2.0",
     "inert": "^4.0.2",
     "joi": "^9.0.4",
