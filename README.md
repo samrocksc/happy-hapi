@@ -12,7 +12,8 @@ This is a project designed to give a backend developer quick access to an easily
 
 ## TODO
 
-[] More examples
-[] More Code
-[] Update .eslintrc with more Node friendly rules
+-[ ] More examples
+-[ ] More Code
+-[ ] Update .eslintrc with more Node friendly rules
+-[ ] Possible setups for Database storage in branches(redis, postgres).
 

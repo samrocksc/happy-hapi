@@ -1,48 +1,66 @@
-const Hapi = require('hapi');
-const Inert = require('inert');
-const Vision = require('vision');
-const HapiSwagger = require('hapi-swagger');
-const Pack = require('./package');
-const Blipp = require('blipp');
-const routes = require('./server/routes');
 const addCorsHeaders = require('hapi-cors-headers');
+const Blipp = require('blipp'); 
+const config = require('./config');
+const Hapi = require('hapi');
+const HapiSwagger = require('hapi-swagger');
+const Inert = require('inert');
+const routes = require('./server/routes');
+const Vision = require('vision');
+const CookieAuth = require('hapi-auth-cookie');
 
 const server = new Hapi.Server();
 
-server.connection({
-  host: 'localhost',
-  port: 3000,
-});
+// Start Hapi connection
+server.connection(config.connection);
 
+// add cors headers
 server.ext('onPreResponse', addCorsHeaders);
 
-server.route(routes);
-
-const options = {
+// hapi swagger stats
+const swaggerOptions = {
+  basePath: '/api',
+  pathPrefixSize: 2,
   info: {
-    title: 'Happy Hapi Examples',
-    version: Pack.version,
+    title: 'Support My Club API',
+    version: '0.5.0',
   },
 };
 
+// Register Hapi Plugins
 server.register([
+  CookieAuth,
   Inert,
   Vision,
+  Blipp,
   {
     register: HapiSwagger,
-    options,
-  }], (err) => {
-  server.start(() => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Server running at:', server.info.uri);
-    }
-  });
+    options: swaggerOptions,
+  },
+], err => err);
+
+const cache = server.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 });
+server.app.cache = cache;
+
+// Set up Auth Strategies
+server.auth.strategy('session', 'cookie', true, {
+  password: 'password-should-be-32-characters',
+  cookie: 'hh',
+  redirectTo: '/',
+  isSecure: false,
 });
 
-server.register({
-  register: Blipp, options: {},
-}, () => {
-  server.start();
+// Prefix Routes with prefix plugin
+server.register({ register: routes }, {
+  routes: {
+    prefix: '/api',
+  },
+}, (err) => {
+  if (err) {
+    throw err;
+  }
 });
+
+server.start();
+
+module.exports = server;
+
