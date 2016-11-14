@@ -4,5 +4,14 @@ module.exports = {
     host: 'localhost',
     port: 3001,
   },
+  swaggerOptions = {
+    basePath: '/api',
+    pathPrefixSize: 2,
+    info: {
+      title: 'Happy Hapi API',
+      version: '0.5.0',
+    },
+  },
 };
+
 

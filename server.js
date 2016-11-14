@@ -16,16 +16,6 @@ server.connection(config.connection);
 // add cors headers
 server.ext('onPreResponse', addCorsHeaders);
 
-// hapi swagger stats
-const swaggerOptions = {
-  basePath: '/api',
-  pathPrefixSize: 2,
-  info: {
-    title: 'Support My Club API',
-    version: '0.5.0',
-  },
-};
-
 // Register Hapi Plugins
 server.register([
   CookieAuth,
@@ -34,7 +24,7 @@ server.register([
   Blipp,
   {
     register: HapiSwagger,
-    options: swaggerOptions,
+    options: config.swaggerOptions,
   },
 ], err => err);
 
