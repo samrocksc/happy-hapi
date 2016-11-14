@@ -1,0 +1,16 @@
+{
+  "cooks": [
+    {
+      "id": 1,
+      "name": "Sam C",
+      "username": "samc"
+    },
+    {
+      "id": 2,
+      "name": "Luis M",
+      "username": "luism"
+    }
+  ],
+  "user": [],
+  "recipes": []
+}
