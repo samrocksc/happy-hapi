@@ -1,8 +1,7 @@
 {
-  "tartable": "rs",
-    "ignore": [
-      "data",
-      ".git",
-      "node_modules/**/node_modules"
-    ]
+  "ignore": [
+    "data",
+    ".git",
+    "node_modules/**/node_modules"
+  ]
 }
