@@ -2,23 +2,49 @@
 const { assign } = require('lodash');
 const db = require('../../lowdb');
 
+const cooks = db.get('cooks');
+
 const handlers = {
   index: (request, reply) => reply('success'),
   browse: (request, reply) => {
     const query = assign({}, request.query, request.params);
-    reply('success').code(500);
+    const results = cooks.find(query).value();
+    reply(results).code(500);
   },
   read: (request, reply) => {
-    console.log('trying read');
-    const result = db.get('cooks')
-      .find({id: 1})
-      .value();
-    console.log('results', result);
-    reply('success').code(500);
+    const query = assign({}, request.query, request.params);
+    const results = cooks.find(query).value();
+    reply(results).code(500);
   },
-  edit: (request, reply) => reply('editing'),
-  add: (request, reply) => reply('adding'),
-  del: (request, reply) => reply('deleting'),
+  edit: (request, reply) => {
+    const params = request.params;
+    const payload = request.payload;
+    cooks.find(params).assign(payload).value();
+
+    db.write()
+      .then((res) => {
+        reply(res).code(201);
+      });
+  },
+  add: (request, reply) => {
+    const payload = request.payload;
+    cooks.push(payload).last().value();
+
+    db.write()
+      .then((res) => {
+        reply(res).code(201);
+      });
+  },
+  del: (request, reply) => {
+    const params = request.params;
+    cooks.remove(params).value();
+
+    db.write()
+      .then((res) => {
+        reply(res).code(201);
+      });
+  },
 };
 
 module.exports = handlers;
+

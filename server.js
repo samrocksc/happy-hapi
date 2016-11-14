@@ -1,5 +1,5 @@
 const addCorsHeaders = require('hapi-cors-headers');
-const Blipp = require('blipp'); 
+const Blipp = require('blipp');
 const config = require('./config');
 const Hapi = require('hapi');
 const HapiSwagger = require('hapi-swagger');
@@ -32,7 +32,8 @@ const cache = server.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 
 server.app.cache = cache;
 
 // Set up Auth Strategies
-server.auth.strategy('session', 'cookie', true, {
+// Set to true to turn on cookie auth
+server.auth.strategy('session', 'cookie', false, {
   password: 'password-should-be-32-characters',
   cookie: 'hh',
   redirectTo: '/',

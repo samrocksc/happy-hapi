@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const handlers = require('../handlers/cooks');
 
-
 module.exports = [
   {
     method: 'GET',

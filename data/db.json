@@ -12,5 +12,14 @@
     }
   ],
   "user": [],
-  "recipes": []
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Pot Roast"
+    },
+    {
+      "name": "Chuck Clark2",
+      "id": 12
+    }
+  ]
 }

@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const handlers = require('../handlers/recipes');
 
-
 module.exports = [
   {
     method: 'GET',
@@ -58,7 +57,7 @@ module.exports = [
     handler: handlers.add,
     config: {
       description: 'Add Recipe',
-      notes: 'Adds a new cook',
+      notes: 'Adds a new recipe',
       tags: ['api'],
       validate: {
         payload: {

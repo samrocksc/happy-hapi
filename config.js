@@ -9,9 +9,8 @@ module.exports = {
     pathPrefixSize: 2,
     info: {
       title: 'Happy Hapi API',
-      version: '0.5.0',
+      version: '0.0.1',
     },
   },
 };
-
 
