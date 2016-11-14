@@ -43,7 +43,7 @@ server.auth.strategy('session', 'cookie', false, {
 // Prefix Routes with prefix plugin
 server.register({ register: routes }, {
   routes: {
-    prefix: '/api',
+    prefix: config.prefix,
   },
 }, (err) => {
   if (err) {
