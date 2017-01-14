@@ -25,7 +25,7 @@ module.exports = [
     config: {
       description: 'Read Cooks',
       notes: 'Looks up a cook by their ID',
-      tags: ['api'], // ADD THIS TAG
+      tags: ['api'],
       validate: {
         params: {
           id: Joi.number(),
@@ -62,7 +62,6 @@ module.exports = [
       validate: {
         payload: {
           name: Joi.string(),
-          id: Joi.number(),
         },
       },
     },

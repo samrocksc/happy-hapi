@@ -1,11 +1,11 @@
 // Using lodash to make an easy combo string for both Browse and Read
 const { assign } = require('lodash');
 const db = require('../../lowdb');
+const { omit } = require('lodash');
 
 const cooks = db.get('cooks');
 
 const handlers = {
-  index: (request, reply) => reply('success'),
   browse: (request, reply) => {
     const query = assign({}, request.query, request.params);
     const results = cooks.find(query).value();
