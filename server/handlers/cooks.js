@@ -1,7 +1,7 @@
 // Using lodash to make an easy combo string for both Browse and Read
 const { assign } = require('lodash');
 const db = require('../../lowdb');
-const { omit } = require('lodash');
+const { iterate } = require('../lib/lowHelp');
 
 const cooks = db.get('cooks');
 
@@ -27,7 +27,9 @@ const handlers = {
       });
   },
   add: (request, reply) => {
-    const payload = request.payload;
+    const data = request.payload;
+    const payload = iterate('cooks', data);
+    console.log('payload', payload);
     cooks.push(payload).last().value();
 
     db.write()
