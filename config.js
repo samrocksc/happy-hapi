@@ -1,8 +1,8 @@
 module.exports = {
   env: process.env.NODE_ENV || 'development',
   connection: {
-    host: 'localhost',
-    port: 3001,
+    host:'0.0.0.0',
+    port: 8080,
   },
   swaggerOptions: {
     basePath: '/api',
