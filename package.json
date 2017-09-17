@@ -2,7 +2,7 @@
   "name": "happy-hapi",
   "version": "0.0.1",
   "description": "A nice skeleton for using Hapi for just about any project.",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
     "babel-eslint": "^6.1.2",
     "blipp": "^2.3.0",
@@ -31,8 +31,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js",
-    "server": "nodemon server.js --config nodemon.js"
+    "server": "nodemon index.js --config nodemon.js"
   },
-  "author": "Sam C.",
+  "author": "Sam C. <samrocksc@gmail.com>",
   "license": "MIT"
 }
