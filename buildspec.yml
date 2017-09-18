@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Running npm install
+  pre_build:
+    commands:
+      - echo Running Prebuild -> Docker build -t samrocksc/happy-hapi
+      - docker build -t samrocksc/happy-hapi .
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Running Docker Container
+      - docker run -p 3001:8080 samrocksc/happy-hapi .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
