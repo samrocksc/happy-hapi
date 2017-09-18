@@ -1,7 +1,6 @@
 // Using lodash to make an easy combo string for both Browse and Read
 const { assign } = require('lodash');
 const db = require('../../lowdb');
-const { omit } = require('lodash');
 
 const cooks = db.get('cooks');
 

@@ -31,7 +31,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js",
-    "server": "nodemon index.js --config nodemon.js"
+    "server": "nodemon index.js --config nodemon.js",
+    "start": "node index.js"
   },
   "author": "Sam C. <samrocksc@gmail.com>",
   "license": "MIT"
