@@ -1,16 +1,21 @@
+version: 0.2
+
 phases:
+  install:
+    commands:
+      - echo Running npm install
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
-    build:
-      commands:
-        - echo Build started on `date`
-        - echo Building the Docker image...
-        - docker build -t samrocksc/happy-hapi .
-        - docker tag samrocksc/happy-hapi:latest 046375019518.dkr.ecr.us-west-2.amazonaws.com/samrocksc/happy-hapi:latest
-      post_build:
-        commands:
-          - echo Build completed on `date`
-          - echo Pushing the Docker image...
-          - docker push 046375019518.dkr.ecr.us-west-2.amazonaws.com/samrocksc/happy-hapi:latest
+      - echo Running Prebuild -> Docker build -t samrocksc/happy-hapi
+      - docker build -t samrocksc/happy-hapi .
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Running Docker Container
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - docker run -p 3001:8080 samrocksc/happy-hapi .
+artifacts:
+  files:
+    - '**/*'
