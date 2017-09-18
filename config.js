@@ -8,7 +8,7 @@ module.exports = {
     basePath: '/api',
     pathPrefixSize: 2,
     info: {
-      title: 'Happy Hapi API 3',
+      title: 'Happy Hapi API',
       version: '0.0.1',
     },
   },
